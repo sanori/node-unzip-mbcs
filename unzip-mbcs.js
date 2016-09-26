@@ -3,12 +3,17 @@ const fs = require('fs');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 
+function fixZipFilename(filename, encoding) {
+  encoding = encoding || 'cp437';
+  return iconv.decode(filename, encoding);
+}
+
 function listSync(zipFilename, encoding) {
   var zip = new AdmZip(zipFilename);
   var zipEntries = zip.getEntries();
   return zipEntries.map(function(x) {
     return {
-      path: iconv.decode(x.rawEntryName, encoding)
+      path: fixZipFilename(x.rawEntryName, encoding)
     };
   });
 }
@@ -17,9 +22,9 @@ function extractSync(zipFilename, encoding, filters) {
   var zip = new AdmZip(zipFilename);
   var zipEntries = zip.getEntries();
 
-  if (filters) {
+  if (filters && filters.length > 0) {
     zipEntries.forEach(function(x) {
-      var path = iconv.decode(x.rawEntryName, encoding);
+      var path = fixZipFilename(x.rawEntryName, encoding);
       var match = filters
         .map(function(x) {
           return path.startsWith(x);
@@ -37,7 +42,7 @@ function extractSync(zipFilename, encoding, filters) {
     });
   } else {
     zipEntries.forEach(function(x) {
-      var path = iconv.decode(x.rawEntryName, encoding);
+      var path = fixZipFilename(x.rawEntryName, encoding);
       if (x.isDirectory) {
         fs.mkdirSync(path);
       } else {
