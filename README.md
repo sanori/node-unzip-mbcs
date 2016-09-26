@@ -8,6 +8,23 @@ Major non-UTF8 encodings by languages:
 - Japanese: sjis (shift_jis), cp932, euc-jp
 - Chinese: gbk, gb18030, gb2312, cp936, hkscs, big5, cp950
 
+
+## Command-line Interface
+```
+Usage: unzip [options] [command]
+
+
+Commands:
+
+  l <zipfile>               list files in zipfile
+  x <zipfile> [targets...]  extract target files from zipfile.
+
+Options:
+
+  -h, --help            output usage information
+  -e, --encoding <enc>  character encoding of filename in .zip
+```
+
 ## API
 
 ### listSync(zipFilename, encoding)

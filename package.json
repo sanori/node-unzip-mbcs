@@ -9,8 +9,12 @@
   },
   "author": "Joo-Won Jung",
   "license": "Apache-2.0",
+  "bin": {
+    "unzip": "cli.js"
+  },
   "dependencies": {
     "adm-zip": "^0.4.7",
+    "commander": "^2.9.0",
     "iconv-lite": "^0.4.13"
   },
   "devDependencies": {
