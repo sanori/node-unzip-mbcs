@@ -1,6 +1,6 @@
 {
-  "name": "node-unzip-mbcs",
-  "version": "0.2.0",
+  "name": "unzip-mbcs",
+  "version": "0.2.1",
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
   "main": "unzip-mbcs.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "Joo-Won Jung",
   "license": "Apache-2.0",
   "bin": {
-    "unzip": "cli.js"
+    "unzip-mbcs": "cli.js"
   },
   "dependencies": {
     "adm-zip": "^0.4.7",
