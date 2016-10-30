@@ -8,10 +8,16 @@ Major non-UTF8 encodings by languages:
 - Japanese: sjis (shift_jis), cp932, euc-jp
 - Chinese: gbk, gb18030, gb2312, cp936, hkscs, big5, cp950
 
+## Install
+
+```
+npm install -g unzip-mbcs
+```
 
 ## Command-line Interface
+
 ```
-Usage: unzip [options] [command]
+Usage: unzip-mbcs [options] [command]
 
 
 Commands:
@@ -41,6 +47,6 @@ The .ZIP format, PKZIP compression, have been widely used. Some valuable data ar
 
 Since ZIP format was created too old (1993), there is no standard character encoding about the file name of zip archive entries. Most of zip file entries are encoded as legacy character encoding, local charset.
 
-In modern UNICODE based environment or global data processing environment such as Linux, this makes inconvinience, less portability, mangled file names, fail to extract the file, and so on.
+In modern UNICODE based environment or global data processing environment such as Linux, this makes inconvenience, less portability, mangled file names, fail to extract the file, and so on.
 
-This module may mitigate the inconviniences.
+This module may mitigate the inconveniences.
