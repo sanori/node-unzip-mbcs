@@ -1,3 +1,5 @@
+[한국어 README](docs/README.ko.md)
+
 # UnZip for non-UTF8 encoding
 
 Extract zip files that MBCS(multi-byte character set) encoded file names, such as ZIP files created in MS Windows, especially East Asian environment.
@@ -33,11 +35,11 @@ Options:
 
 ## API
 
-### listSync(zipFilename, encoding)
+### listSync(zipFilename, encoding='cp437')
 
 Return the information of the files in zip archive `zipFilename` with character `encoding`
 
-### extractSync(zipFilename, encoding, [filters])
+### extractSync(zipFilename, encoding='cp437', [filters])
 
 Extract files in zip archive `zipFilename` on current directory. Assume that the file names in zip archive are encoded as `encoding`. Only the files prefixed the values of `filters` list are extracted if `filters` are provided.
 
