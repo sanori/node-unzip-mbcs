@@ -2,6 +2,14 @@
 const fs = require('fs');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
+const method2String = {
+  0: 'stored',
+  1: 'shrunk',
+  6: 'imploded',
+  8: 'deflated',
+  9: 'deflate64',
+  14: 'LZMA'
+};
 
 function fixZipFilename(filename, encoding) {
   encoding = encoding || 'cp437';
@@ -10,12 +18,15 @@ function fixZipFilename(filename, encoding) {
 
 function listSync(zipFilename, encoding) {
   var zip = new AdmZip(zipFilename);
-  var zipEntries = zip.getEntries();
-  return zipEntries.map(function(x) {
+  var results = zip.getEntries().map(function(x) {
     return {
-      path: fixZipFilename(x.rawEntryName, encoding)
+      path: fixZipFilename(x.rawEntryName, encoding),
+      time: x.header.time,
+      size: x.header.size,
+      method: method2String[x.header.method] || 'unknown'
     };
   });
+  return results;
 }
 
 function extractSync(zipFilename, encoding, filters) {
