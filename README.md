@@ -1,6 +1,6 @@
 [한국어 README](docs/README.ko.md)
 
-# UnZip for non-UTF8 encoding
+# UnZip for non-UTF8 encoding [![Build Status](https://travis-ci.org/sanori/node-unzip-mbcs.svg?branch=master)](https://travis-ci.org/sanori/node-unzip-mbcs)
 
 Extract zip files that MBCS(multi-byte character set) encoded file names, such as ZIP files created in MS Windows, especially East Asian environment.
 
