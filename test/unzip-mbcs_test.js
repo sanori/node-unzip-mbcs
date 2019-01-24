@@ -2,7 +2,6 @@
 const fs = require('fs');
 const path = require('path');
 const expect = require('chai').expect;
-const _ = require('lodash');
 const unzip = require('../unzip-mbcs');
 
 describe('unzip-mbcs', function() {
@@ -13,7 +12,7 @@ describe('unzip-mbcs', function() {
   };
 
   after('remove extracted files', function() {
-    var files = _.clone(testCase.expected).reverse();
+    var files = testCase.expected.slice().reverse();
     files.forEach(x => {
       try {
         if (x.slice(-1) === '/') {
