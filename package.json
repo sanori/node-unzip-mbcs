@@ -1,10 +1,10 @@
 {
   "name": "unzip-mbcs",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
   "main": "unzip-mbcs.js",
   "scripts": {
-    "pretest": "jshint .",
+    "pretest": "eslint .",
     "test": "mocha"
   },
   "author": "Joo-Won Jung",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "jshint": "^2.11.1",
+    "eslint": "^7.5.0",
     "mocha": "^8.0.1"
   },
   "repository": {
