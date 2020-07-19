@@ -13,15 +13,15 @@
     "unzip-mbcs": "cli.js"
   },
   "dependencies": {
-    "adm-zip": "^0.4.14",
-    "commander": "^2.20.3",
-    "iconv-lite": "^0.5.1",
+    "adm-zip": "^0.4.16",
+    "commander": "^6.0.0",
+    "iconv-lite": "^0.6.2",
     "sprintf-js": "^1.1.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "jshint": "^2.11.0",
-    "mocha": "^7.1.1"
+    "jshint": "^2.11.1",
+    "mocha": "^8.0.1"
   },
   "repository": {
     "type": "git",
