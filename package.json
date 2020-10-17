@@ -1,6 +1,6 @@
 {
   "name": "unzip-mbcs",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
   "main": "unzip-mbcs.js",
   "scripts": {
@@ -14,14 +14,14 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.16",
-    "commander": "^6.0.0",
+    "commander": "^6.1.0",
     "iconv-lite": "^0.6.2",
     "sprintf-js": "^1.1.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.5.0",
-    "mocha": "^8.0.1"
+    "eslint": "^7.11.0",
+    "mocha": "^8.2.0"
   },
   "repository": {
     "type": "git",
