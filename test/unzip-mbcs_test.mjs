@@ -1,8 +1,11 @@
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const expect = require('chai').expect;
-const unzip = require('../unzip-mbcs');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { expect } from 'chai';
+import { default as unzip } from '../unzip-mbcs.js';
+
+const __dirname= path.dirname(fileURLToPath(import.meta.url));
 
 describe('unzip-mbcs', function() {
   const testCase = {
