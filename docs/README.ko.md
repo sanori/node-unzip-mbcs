@@ -1,4 +1,4 @@
-# UTF-8 아닌 파일명을 위한 UnZip [![Build Status](https://travis-ci.org/sanori/node-unzip-mbcs.svg?branch=master)](https://travis-ci.org/sanori/node-unzip-mbcs)
+# UTF-8 아닌 파일명을 위한 UnZip
 
 파일 이름이 영문 알파벳이 아닌 한글, 히라가나, 한자로 되어 있는 zip 파일을 제대로 풀어주기 위한 unzip 프로그램 및 그 module. 정확하게는, zip 압축 파일 안의 파일명이 UTF-8이 아닌 MBCS(multi-byte character set)라 불리는 지역 character set으로 encoding되어 있어서 Linux의 unzip package나 mingw 환경의 unzip으로 푸는데 어려움이 있는 zip파일을 잘 풀기 위한 node.js 프로그램과 그 module.
 
