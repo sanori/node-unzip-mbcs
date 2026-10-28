@@ -1,8 +1,9 @@
-'use strict';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { expect } from 'chai';
+import { describe, it, after } from 'node:test';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { chdir } from 'node:process';
+import assert from 'node:assert';
 import { default as unzip } from '../unzip-mbcs.js';
 
 const __dirname= path.dirname(fileURLToPath(import.meta.url));
@@ -14,7 +15,7 @@ describe('unzip-mbcs', function() {
     expected: ['새 텍스트 문서.txt', '새 폴더/', '새 폴더/한글문서.txt']
   };
 
-  after('remove extracted files', function() {
+  after(function() {
     var files = testCase.expected.slice().reverse();
     files.forEach(x => {
       try {
@@ -33,10 +34,11 @@ describe('unzip-mbcs', function() {
 
   it('gives file names in archive', function() {
     var r = unzip.listSync(testCase.file, testCase.encoding);
-    expect(r.map(x => x.path)).to.deep.equal(testCase.expected);
+    assert.deepStrictEqual(r.map(x => x.path), testCase.expected);
   });
 
-  it('extracts files in current directory', function(done) {
+  it('extracts files in current directory', function(t, done) {
+    chdir(__dirname);
     unzip.extractSync(testCase.file, testCase.encoding);
     Promise.all(
         testCase.expected
