@@ -1,6 +1,6 @@
 {
   "name": "unzip-mbcs",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
   "type": "commonjs",
   "main": "unzip-mbcs.js",
