@@ -1,5 +1,6 @@
 'use strict';
 const fs = require('node:fs');
+const { dirname } = require('node:path');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 const method2String = {
@@ -57,6 +58,12 @@ function extractSync(zipFilename, encoding, filters) {
       if (x.isDirectory) {
         fs.mkdirSync(path);
       } else {
+        const dir = dirname(path);
+        try {
+          fs.statSync(dir);
+        } catch {
+          fs.mkdirSync(dir);
+        }
         fs.writeFileSync(path, zip.readFile(x));
       }
     });
