@@ -1,17 +1,26 @@
 {
   "name": "unzip-mbcs",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
+  "type": "commonjs",
   "main": "unzip-mbcs.js",
-  "scripts": {
-    "pretest": "eslint .",
-    "test": "mocha"
-  },
-  "author": "Joo-Won Jung",
-  "license": "Apache-2.0",
   "bin": {
     "unzip-mbcs": "cli.js"
   },
+  "files": [
+    "unzip-mbcs.js",
+    "cli.js",
+    "docs/README.ko.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "pretest": "biome lint .",
+    "test": "node --test"
+  },
+  "author": "Joo-Won Jung",
+  "license": "Apache-2.0",
   "dependencies": {
     "adm-zip": "^0.6.1",
     "commander": "^15.0.0",
@@ -19,11 +28,7 @@
     "sprintf-js": "^1.1.3"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "chai": "^6.3.0",
-    "eslint": "^10.13.0",
-    "globals": "^17.13.0",
-    "mocha": "12.0.3"
+    "@biomejs/biome": "2.6.3"
   },
   "repository": {
     "type": "git",

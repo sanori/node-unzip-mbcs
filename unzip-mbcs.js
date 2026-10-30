@@ -1,5 +1,6 @@
 'use strict';
-const fs = require('fs');
+const fs = require('node:fs');
+const { dirname } = require('node:path');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 const method2String = {
@@ -8,7 +9,7 @@ const method2String = {
   6: 'imploded',
   8: 'deflated',
   9: 'deflate64',
-  14: 'LZMA'
+  14: 'LZMA',
 };
 
 function fixZipFilename(filename, encoding) {
@@ -18,12 +19,12 @@ function fixZipFilename(filename, encoding) {
 
 function listSync(zipFilename, encoding) {
   var zip = new AdmZip(zipFilename);
-  var results = zip.getEntries().map(function(x) {
+  var results = zip.getEntries().map((x) => {
     return {
       path: fixZipFilename(x.rawEntryName, encoding),
       time: x.header.time,
       size: x.header.size,
-      method: method2String[x.header.method] || 'unknown'
+      method: method2String[x.header.method] || 'unknown',
     };
   });
   return results;
@@ -34,14 +35,14 @@ function extractSync(zipFilename, encoding, filters) {
   var zipEntries = zip.getEntries();
 
   if (filters && filters.length > 0) {
-    zipEntries.forEach(function(x) {
+    zipEntries.forEach((x) => {
       var path = fixZipFilename(x.rawEntryName, encoding);
       var match = filters
-        .map(function(x) {
+        .map((x) => {
           return path.startsWith(x);
         })
-        .reduce(function(acc, cur) {
-          return (acc || cur);
+        .reduce((acc, cur) => {
+          return acc || cur;
         }, false);
       if (match) {
         if (x.isDirectory) {
@@ -52,11 +53,17 @@ function extractSync(zipFilename, encoding, filters) {
       }
     });
   } else {
-    zipEntries.forEach(function(x) {
+    zipEntries.forEach((x) => {
       var path = fixZipFilename(x.rawEntryName, encoding);
       if (x.isDirectory) {
         fs.mkdirSync(path);
       } else {
+        const dir = dirname(path);
+        try {
+          fs.statSync(dir);
+        } catch {
+          fs.mkdirSync(dir);
+        }
         fs.writeFileSync(path, zip.readFile(x));
       }
     });
@@ -65,5 +72,5 @@ function extractSync(zipFilename, encoding, filters) {
 
 module.exports = {
   listSync: listSync,
-  extractSync: extractSync
+  extractSync: extractSync,
 };

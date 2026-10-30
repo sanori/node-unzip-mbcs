@@ -2,33 +2,42 @@
 
 'use strict';
 const sprintf = require('sprintf-js').sprintf;
-const program = require('commander');
+const { program } = require('commander');
 const unzip = require('./unzip-mbcs');
 
 function main() {
-  program
-    .option('-e, --encoding <enc>', 'character encoding of filename in .zip');
+  program.option(
+    '-e, --encoding <enc>',
+    'character encoding of filename in .zip',
+  );
 
   program
     .command('l <zipfile>')
     .description('list files in zipfile')
-    .action(function(zipfile) {
+    .action((zipfile) => {
       var l = unzip.listSync(zipfile, program.encoding);
       console.log('  Length     Date    Time   Name');
       console.log('--------- ---------- ----- -----------');
-      l.forEach(function(x) {
-        console.log(sprintf('%9d %4d-%02d-%02d %02d:%02d %s',
-          x.size,
-          x.time.getFullYear(), x.time.getMonth() + 1, x.time.getDate(),
-          x.time.getHours(), x.time.getMinutes(),
-          x.path
-        ));
+      l.forEach((x) => {
+        console.log(
+          sprintf(
+            '%9d %4d-%02d-%02d %02d:%02d %s',
+            x.size,
+            x.time.getFullYear(),
+            x.time.getMonth() + 1,
+            x.time.getDate(),
+            x.time.getHours(),
+            x.time.getMinutes(),
+            x.path,
+          ),
+        );
       });
     });
 
-  program.command('x <zipfile> [targets...]')
+  program
+    .command('x <zipfile> [targets...]')
     .description('extract target files from zipfile.')
-    .action(function(zipfile, targets) {
+    .action((zipfile, targets) => {
       unzip.extractSync(zipfile, program.encoding, targets);
     });
 
