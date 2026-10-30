@@ -4,6 +4,14 @@
   "description": "UnZip for non-UTF8 encoding such as cp949, sjis, gbk, euc-kr, euc-jp, and gb2312",
   "type": "commonjs",
   "main": "unzip-mbcs.js",
+  "bin": {
+    "unzip-mbcs": "cli.js"
+  },
+  "files": [
+    "unzip-mbcs.js",
+    "cli.js",
+    "docs/README.ko.md"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -13,9 +21,6 @@
   },
   "author": "Joo-Won Jung",
   "license": "Apache-2.0",
-  "bin": {
-    "unzip-mbcs": "cli.js"
-  },
   "dependencies": {
     "adm-zip": "^0.6.1",
     "commander": "^15.0.0",
