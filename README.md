@@ -13,6 +13,7 @@ Major non-UTF-8 encodings by language:
 ## Usage
 
 ### Run via CLI
+
 You can run the command-line interface directly using `npx`:
 
 ```bash
@@ -20,6 +21,7 @@ npx unzip-mbcs [options] [command]
 ```
 
 ### Install as a Module (for programmatic use)
+
 If you want to use this package in your project, you can install it in the same way as any other npm module.
 
 ```bash

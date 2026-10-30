@@ -11,6 +11,7 @@
 ## 사용법
 
 ### CLI (command-line interface)로 실행
+
 Node.js 가 설치되어 있다면, `npx`로 바로 실행할 수 있다.
 
 ```bash
@@ -18,6 +19,7 @@ npx unzip-mbcs [options] [command]
 ```
 
 ### 모듈로 설치
+
 프로젝트 안에서 모듈로 쓰고 싶다면 다른 npm module과 비슷하게 설치하면 된다.
 
 ```bash
